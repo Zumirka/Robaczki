@@ -19,7 +19,7 @@ public class Main extends AppCompatActivity {
         @SuppressLint("InlinedApi")
         @Override
         public void run() {
-
+// lololo
             mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
