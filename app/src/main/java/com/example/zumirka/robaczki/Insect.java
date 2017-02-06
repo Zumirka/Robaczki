@@ -8,13 +8,15 @@ import android.graphics.RectF;
 
 public class Insect {
     private RectF oval;
-    private int x,y,w,h,move_x,move_y;
+    private int x,y,w,h;
+    int move_x=5;
+    int move_y=5;
     public Insect(int x,int y,int w,int h)
     {
         this.x=x;
         this.y=y;
-        this.w=w;
-        this.h=h;
+        this.w=w+x;
+        this.h=h+x;
         oval=new RectF(x,y,x+w,y+h);
     }
     public RectF getRect(){
@@ -27,37 +29,33 @@ public class Insect {
         oval.right=y+h;
         return this.oval;
     }
-    public int  getX()
+    public int getMove_x()
     {
-        return x;
+        return move_x;
     }
-    public  int getY()
+    public int getMove_y()
     {
-        return y;
-    }
-    public  int getW()
-    {
-        return w;
-    }
-    public  int getH()
-    {
-        return h;
+        return move_y;
     }
     public  void drawInsect(Canvas c)
     {
         Paint paint = new Paint();
-
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.RED);
-
+        paint.setColor(Color.WHITE);
         c.drawOval(getRect(), paint);
     }
-    public void setMove(int move_x,int move_y)
+    public void setMove_x(int x)
     {
-        this.move_x=move_x;
-        this.move_y=move_y;
-        x+=move_x;
-        y+=move_y;
+        move_x=x;
+    }
+    public void setMove_y(int y)
+    {
+        move_y=y;
+    }
+    public void updateInsect()
+    {
+        x+=(move_x);
+        y+=(move_y);
 
     }
 
