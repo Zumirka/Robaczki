@@ -18,6 +18,8 @@ public class Game  extends View implements View.OnClickListener{
     Paint p = new Paint();
     Handler h;
     Runnable runnable;
+    long startTime = 0;
+
 
 
     public Game(Context context, AttributeSet attrs) {
@@ -26,7 +28,17 @@ public class Game  extends View implements View.OnClickListener{
         this.setOnClickListener(this);
     }
     public void onDraw(Canvas c) {
-       insect.setMove(5,5);
+
+        try {
+            Thread.sleep(40);
+        } catch (InterruptedException e) {
+
+        }
+        long time_interim = System.currentTimeMillis();
+        int adj_move = (int) (time_interim - startTime);
+        startTime = time_interim;
+        invalidate();
+        insect.setMove(5,5);
         insect.drawInsect(c);
 
 
@@ -34,20 +46,6 @@ public class Game  extends View implements View.OnClickListener{
     }
     @Override
     public void onClick(View v) {
-
-
-        h = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                postInvalidate();
-                h.postDelayed(this, 1);
-
-            }
-        };
-        h.postDelayed(runnable, 1);
-            return;
-
 
 
 
