@@ -50,16 +50,16 @@ public class GameView extends AppCompatActivity {
             hide();
         }
     };
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+ /*  private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
+               // delayedHide(AUTO_HIDE_DELAY_MILLIS);
             }
             return false;
         }
     };
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +70,12 @@ public class GameView extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        mContentView.setOnClickListener(new View.OnClickListener() {
+      /*  mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggle();
             }
-        });
+        });*/
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     }
@@ -84,9 +84,6 @@ public class GameView extends AppCompatActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
         delayedHide(100);
     }
 
@@ -99,7 +96,6 @@ public class GameView extends AppCompatActivity {
     }
 
     private void hide() {
-        // Hide UI first
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -112,7 +108,7 @@ public class GameView extends AppCompatActivity {
 
     @SuppressLint("InlinedApi")
     private void show() {
-        // Show the system bar
+
         mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         mVisible = true;
